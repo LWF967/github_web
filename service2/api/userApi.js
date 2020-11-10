@@ -4,10 +4,16 @@ var router = express.Router();
 var mysql = require('mysql');
 var $sql = require('../db/sqlMap');
 const fs = require('fs');
-var conn = mysql.createConnection(models.mysql);
-var pool = mysql.createPool(models.mysql);
+
+var pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  port: '3306',
+  database: 'master_express'
+});
 require('../util/util');
-conn.connect();
+
 
 //测试接口
 //
@@ -113,7 +119,7 @@ router.post('/login', (req, res) => {
   if (params.name) {
     sql_name += "where userName ='"+ params.name +"'";
   }
-  conn.query("select * from user where userName='"+ params.name +"'", params.name, function(err, result) {
+  models("select * from user where userName='"+ params.name +"'", params.name, function(err, result) {
     if (err) {
       console.log(err+'1');
     }
@@ -136,7 +142,22 @@ router.post('/login', (req, res) => {
   })
 });
 
-
+// 增加用户接口
+router.post('/addUser', (req, res) => {
+  var sql = $sql.user.add;
+  var params = req.body;
+  console.log(params);
+  console.log(params.birth);
+  models(sql, [params.name, params.account, params.pass, params.checkPass,
+    params.email, params.phone, params.card, dateStr(params.birth), params.sex], function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      jsonWrite(res, result);
+    }
+  })
+});
 
 
 

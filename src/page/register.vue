@@ -133,7 +133,7 @@
             { validator: validateCard, trigger: 'blur' }
           ],
           birth: [
-            { required: true, message: '请输入出生日期',type: 'date', trigger: 'blur' }
+            { required: true, message: '请输入出生日期',type: 'string', trigger: 'blur' }
           ],
           sex: [
             { required: true, message: '请输入性别', trigger: 'blur' }
@@ -146,9 +146,11 @@
         const self = this;
         self.$refs[formName].validate((valid) => {
           if (valid) {
-            self.$http.post('/api/user/addUser',self.form).then(function(response) {
+            //设置查询参数
+            self.$http.post('/api/test/addUser',self.form).then(function(response) {
               console.log(response);
-              self.$router.push('/register-success');
+              //带参数的查询跳转
+              self.$router.push('/success_action');
             }).then(function(error) {
               console.log(error);
             })

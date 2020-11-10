@@ -6,7 +6,7 @@ import VipLogin from '@/components/viplogin'
 import VipRegister from '@/components/vipregister'
 import Login from '@/page/login'
 import register from "../page/register";
-
+import success_action from "../page/RegisterSuccess"
 
 
 Vue.use(Router)
@@ -48,6 +48,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: register
+    },
+    {
+      path: '/success_action',
+      name: 'success_action',
+      component: success_action
     }
 
   ]

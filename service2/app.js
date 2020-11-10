@@ -12,13 +12,11 @@ var  persons= require('./routes/person');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var loginRouter = require('./routes/LoginUser');
-var RegisterRouter = require('./routes/LoginResgister');
 
 var LoginUser = require('./api/userApi');
 var app = express();
 
-var testUser = require('./routes/testdb')
+
 
 
 // post
@@ -34,8 +32,7 @@ app.use('/test',LoginUser);
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'ejs');
 //login
-app.use('/login',loginRouter);
-app.use('/register',RegisterRouter);
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html',require('ejs').__express)
