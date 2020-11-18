@@ -66,7 +66,7 @@
             self.$http.post('/api/test/login',self.ruleForm)
               .then((response) => {
                 console.log(response);
-                if (response.data == -1) {
+                if (response.status == -1) {
                   self.errorInfo = true;
                   self.errInfo = '该用户不存在';
                   console.log('该用户不存在')
@@ -75,7 +75,10 @@
                   self.errorInfo = true;
                   self.errInfo = '密码错误';
                 } else if (response.status == 200) {
-                  self.$router.push('/register');
+                  console.log('您尚未注册')
+                  self.errorInfo = true;
+                  self.errInfo = '您尚未注册'
+                  self.$router.push('/viploginhome');
                   sessionStorage.setItem('ms_username',self.ruleForm.name);
                   sessionStorage.setItem('ms_user',JSON.stringify(self.ruleForm));
                   console.log(JSON.stringify(self.ruleForm));

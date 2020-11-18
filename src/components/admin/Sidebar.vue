@@ -25,7 +25,7 @@
             return {
                 items: [
                     {
-                        icon: 'el-icon-setting',
+                        icon: 'el-icon-menu',
                         index: 'readme',
                         title: '简介'
                     },
@@ -47,7 +47,32 @@
                                 title: '修改密码'
                             }
                         ]
-                    }
+                    },
+                  {
+                    icon: 'el-icon-search',
+                    index: 'chart',
+                    title: '图表分析',
+                    subs: [
+                      {
+                        index: 'monthTable',
+                        title: '月度数据'
+                      },
+                      {
+                        index: 'yearsTable',
+                        title: '年度数据'
+                      },
+                      {
+                        index: 'analyzeTable',
+                        title: '分析汇报'
+                      }
+                    ]
+                  },
+                  {
+                    icon: 'el-icon-search',
+                    index: 'useradmin',
+                    title: '人员管理',
+                  }
+
                 ]
             }
         },

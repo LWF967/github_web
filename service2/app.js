@@ -16,7 +16,7 @@ var usersRouter = require('./routes/users');
 var LoginUser = require('./api/userApi');
 var app = express();
 
-
+var usAdmin = require('./db/useradmin')
 
 
 // post
@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 
-
+app.use('/useradmin',usAdmin);
 app.use('/test',LoginUser);
 
 // view engine setup

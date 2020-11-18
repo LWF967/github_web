@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Search from '../page/search'
-import VipLogin from '@/components/viplogin'
+import VipLoginHome from '@/components/admin/Home'
 import VipRegister from '@/components/vipregister'
 import Login from '@/page/login'
 import register from "../page/register";
@@ -30,9 +30,19 @@ export default new Router({
       component: Search
     },
     {
-      path: '/viplogin',
-      name: 'viplogin',
-      component: VipLogin
+      path: '/viploginhome',
+      name: 'viploginhome',
+      component: VipLoginHome,
+      children:[
+        {
+          path: '/readme',
+          component: reslove => require(['../page/Readme.vue'], reslove)
+        },
+        {
+          path: '/useradmin',
+          component: reslove => require(['../page/userAdmin.vue'], reslove)
+        },
+      ]
     },
     {
       path: '/vipregister',
